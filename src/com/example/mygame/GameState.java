@@ -3,12 +3,8 @@ package com.example.mygame;
 import java.util.ArrayList;
 
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.util.Log;
 import android.view.MotionEvent;
 import sheep.game.State;
 import sheep.graphics.Color;
@@ -42,8 +38,9 @@ public class GameState extends State implements TouchListener {
 	}
 	
 	public boolean onTouchDown(MotionEvent event) {
-		Log.d("Touch", "Touch registered at" + event.getX() + ", " + event.getY());
-		helicopters.get(0).move(event.getX(), event.getY());
+		for (Helicopter helicopter : helicopters) {
+			helicopter.move(event.getX(), event.getY());
+		}
 		return false;
 	}
 
